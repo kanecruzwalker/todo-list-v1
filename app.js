@@ -5,6 +5,10 @@ const bodyParser = require("body-parser")
 var items=[];
 
 app.use(bodyParser.urlencoded({extended: true}));
+// for express to know access point 
+app.use(express.static("public"));
+
+
 app.set("view engine", "ejs");
 
 app.get("/" , function (req, res){
