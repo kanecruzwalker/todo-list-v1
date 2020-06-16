@@ -3,8 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const date = require(__dirname + "/date.js");
 
-var items=[];
-let workItems=[];
+const items=[];
+const workItems=[];
 
 app.use(bodyParser.urlencoded({extended: true}));
 // for express to know access point 
