@@ -49,6 +49,10 @@ app.post("/work", function (req, res){
     res.redirect("/work");
 });
 
+app.get("/about", function (req, res){
+    res.render("about");
+})
+
 app.listen(3000, function (){
     console.log("You are connected to PORT 3000");
 });
