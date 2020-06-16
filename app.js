@@ -12,6 +12,7 @@ app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 
+
 app.get("/" , function (req, res){
 
     var today = new Date();
@@ -22,17 +23,24 @@ app.get("/" , function (req, res){
     };
     var day = today.toLocaleDateString("en-US", options);
     
-    res.render("list", {listTitle: day, newListItem: workItems });
+    res.render("list", {listTitle: day, newListItem: items });
 })
 
 app.post("/", function(req, res){
+    console.log(req.body)
     var note = req.body.newItem;
-    items.push(note);
-    res.redirect("/");
+
+    if(req.body.list === "Work"){
+        workItems.push(note);
+        res.redirect("/work")
+    }else{
+        items.push(note);
+        res.redirect("/");
+    }
 });
 
 app.get("/work", function(req, res){
-    res.render("list", {listTitle: "Work List", newListItem: items});
+    res.render("list", {listTitle: "Work List", newListItem: workItems});
 });
 
 app.post("/work", function (req, res){
